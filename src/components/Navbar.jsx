@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 
 const Navbar = () => {
@@ -10,16 +10,16 @@ const Navbar = () => {
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
                 <div className="flex h-20 items-center justify-between">
                     <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
-                        <Link className="flex flex-shrink-0 items-center mr-4" to="/">
+                        <NavLink className="flex flex-shrink-0 items-center mr-4" to="/">
                             <img className="h-10 w-auto" src={logo} alt="Never Eat Alone"/>
                             <span className="hidden md:block text-white text-2xl font-bold ml-2">Never Eat Alone</span>
-                        </Link>
+                        </NavLink>
                 
                         <div className="md:ml-auto">
                             <div className="flex space-x-2">
-                                <Link to="/" className="text-white bg-black hover:bg-gray-900 hover:text-white rounded-md px-3 py-2">Home</Link>
-                                <Link to="/add-meetup" className="text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2">Add Meetup</Link>
-                                <Link to="/profile" className="text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2">Profile</Link>
+                                <NavLink to="/" className={linkClass}>Home</NavLink>
+                                <NavLink to="/add-meetup" className={linkClass}>Add Meetup</NavLink>
+                                <NavLink to="/profile" className={linkClass}>Profile</NavLink>
                             </div>
                         </div>
                     </div>
