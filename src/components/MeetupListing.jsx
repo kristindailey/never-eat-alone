@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaDiscord } from "react-icons/fa";
+// *** FIX JOIN BUTTON/ROUTE ***
 
 const MeetupListing = ({ meetup }) => {
   return (
@@ -14,13 +15,15 @@ const MeetupListing = ({ meetup }) => {
             
             <h3 className="text-indigo-500 mb-2">{`${meetup.meetingDate} @ ${meetup.meetingTime} ${meetup.meetingTimeZone}`}</h3>
             
-            <FaDiscord className="inline text-orange-700 mb-3 mr-1"/>
-                {meetup.createdBy}
+            <div className="mb-2">
+                <FaDiscord className="inline text-orange-700 mr-1"/>
+                <p className="inline text-orange-700 ml-1">{meetup.createdBy}</p>
+            </div>
             
             <div className="border border-gray-100 mb-5"></div>
             
             <div className="flex flex-col lg:flex-row justify-between mb-4">
-                <Link to={`/meetup/${meetup.id}`} className="h-[36px] bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg text-center text-sm">
+                <Link to={`/meetup/${meetup.$id}`} className="h-[36px] bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg text-center text-sm">
                     Join
                 </Link>
             </div>

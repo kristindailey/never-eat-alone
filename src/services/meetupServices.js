@@ -1,9 +1,8 @@
-// import { ID } from "appwrite";
 // import { databases, appwriteConfig } from "./appwrite";
 
 // export const meetupServices = {
 //     // Get all meetups
-//     getAllMeetups: async () => {
+//     getMeetups: async () => {
 //         try {
 //             const response = await databases.listDocuments(
 //                 appwriteConfig.databaseId,
@@ -15,18 +14,18 @@
 //             throw error;
 //         }
 //     },
-//     // Create single meetup
-//     createMeetup: async (meetupData) => {
-//         try {
-//             return await databases.createDocument(
-//                 appwriteConfig.databaseId,
-//                 appwriteConfig.meetupCollectionId,
-//                 ID.unique(),
-//                 meetupData,
-//             );
-//         } catch (error) {
-//             console.error("Error creating meetup:", error);
-//             throw error;            
-//         }
-//     },
+    // Create single meetup
+    // createMeetup: async (meetupData) => {
+    //     try {
+    //         return await databases.createDocument(
+    //             appwriteConfig.databaseId,
+    //             appwriteConfig.meetupCollectionId,
+    //             ID.unique(),
+    //             meetupData,
+    //         );
+    //     } catch (error) {
+    //         console.error("Error creating meetup:", error);
+    //         throw error;            
+    //     }
+    // },
 // };

@@ -1,7 +1,7 @@
 import React from "react";
 import Hero from "../components/Hero";
 import HomeCards from "../components/HomeCards";
-// import MeetupListings from "../components/MeetupListings";
+import MeetupListings from "../components/MeetupListings";
 import ViewAllMeetups from "../components/ViewAllMeetups";
 
 const HomePage = () => {
@@ -9,7 +9,7 @@ const HomePage = () => {
     <>
         <Hero />
         <HomeCards />
-        {/* <MeetupListings /> */}
+        <MeetupListings />
         <ViewAllMeetups />
     </>
   );

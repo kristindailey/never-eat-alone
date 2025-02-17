@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// check route
 
 const ViewAllMeetups = () => {
   return (
