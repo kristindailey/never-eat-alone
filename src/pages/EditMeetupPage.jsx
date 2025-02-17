@@ -59,8 +59,7 @@ const EditMeetupPage = () => {
                 appwriteConfig.databaseId, 
                 appwriteConfig.meetupCollectionId,
                 id, 
-                updatedMeetup,
-                discordName
+                updatedMeetup
             );
 
             toast.success("Meetup updated successfully.");
