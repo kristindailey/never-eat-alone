@@ -1,10 +1,11 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { appwriteConfig, databases } from "../services/appwrite";
+import { useLocation } from "react-router-dom";
 import MeetupListing from "./MeetupListing";
 
 const MeetupListings = () => {
   const [meetups, setMeetups] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     const getMeetups = async () => {
@@ -20,11 +21,15 @@ const MeetupListings = () => {
     getMeetups();
   }, []);
 
+  const getHeading = () => {
+    return location.pathname === "/" ? "Upcoming Meetups" : "Browse Meetups";
+  };
+
   return (
     <section className="bg-blue-50 px-4 py-10">
       <div className="container-xl lg:container m-auto">
         <h2 className="text-3xl font-bold text-indigo-500 mb-6 text-center">
-          Upcoming Meetups
+          {getHeading()}
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
