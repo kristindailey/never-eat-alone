@@ -2,19 +2,24 @@ import React, { useState, useEffect } from "react";
 import { appwriteConfig, databases } from "../services/appwrite";
 import { useLocation } from "react-router-dom";
 import MeetupListing from "./MeetupListing";
+import Spinner from "./Spinner";
 
 const MeetupListings = () => {
   const [meetups, setMeetups] = useState([]);
+  const [loading, setLoading] = useState(true);
   const location = useLocation();
 
   useEffect(() => {
     const getMeetups = async () => {
       try {
+        setLoading(true);
         const response = await databases.listDocuments(appwriteConfig.databaseId, appwriteConfig.meetupCollectionId);
         console.log(response);
         setMeetups(response.documents);
       } catch (error) {
         console.error("Error fetching data", error);
+      } finally {
+        setLoading(false);
       }
     };
   
@@ -32,11 +37,15 @@ const MeetupListings = () => {
           {getHeading()}
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {meetups.map((meetup) => (
-              <MeetupListing key={meetup.$id} meetup={meetup} />
-            ))}
-        </div>
+        {loading ? (
+          <Spinner loading={loading} />
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {meetups.map((meetup) => (
+                <MeetupListing key={meetup.$id} meetup={meetup} />
+              ))}
+          </div>
+        )}
       </div>
     </section>
   );
