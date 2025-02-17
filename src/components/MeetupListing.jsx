@@ -18,7 +18,7 @@ const MeetupListing = ({ meetup }) => {
             
             <div className="mb-2">
                 <FaDiscord className="inline text-blue-500 mr-1"/>
-                <p className="inline text-blue-500 ml-1">{meetup.createdBy}</p>
+                <p className="inline text-blue-500 ml-1">{meetup.discordName}</p>
             </div>
             
             <div className="border border-gray-100 mb-5"></div>

@@ -9,6 +9,7 @@ const AddMeetupPage = () => {
   const [meetingDate, setMeetingDate] = useState("");
   const [meetingTime, setMeetingTime] = useState("");
   const [meetingTimeZone, setMeetingTimeZone] = useState("");
+  const [discordName, setDiscordName] = useState("");
 
   const navigate = useNavigate();
 
@@ -21,6 +22,7 @@ const AddMeetupPage = () => {
       meetingDate,
       meetingTime,
       meetingTimeZone,
+      discordName,
     };
 
     await databases.createDocument(
@@ -43,7 +45,7 @@ const AddMeetupPage = () => {
             <h2 className="text-3xl text-center font-semibold mb-6">Add Meetup</h2>
 
             <div className="mb-4">
-              <label className="block text-gray-700 font-bold mb-2">Meetup Listing Name</label>
+              <label htmlFor="title" className="block text-gray-700 font-bold mb-2">Meetup Listing Name</label>
               <input type="text" id="title" name="title" className="border rounded w-full py-2 px-3 mb-2" placeholder="e.g., Banki Over Lunch" required value={title} onChange={(e) => setTitle(e.target.value)}/>
             </div>
 
@@ -53,20 +55,25 @@ const AddMeetupPage = () => {
             </div>
 
             <div className='mb-4'>
-              <label className='block text-gray-700 font-bold mb-2'>
+              <label htmlFor="meeting_date" className='block text-gray-700 font-bold mb-2'>
                 Meeting Date
               </label>
-              <input type='text' id='location' name='location' className='border rounded w-full py-2 px-3 mb-2' placeholder='e.g., March 31, 2025' required value={meetingDate} onChange={(e) => setMeetingDate(e.target.value)}/>
+              <input type='text' id='meeting_date' name='meeting_date' className='border rounded w-full py-2 px-3 mb-2' placeholder='e.g., March 31, 2025' required value={meetingDate} onChange={(e) => setMeetingDate(e.target.value)}/>
             </div>
 
             <div className="mb-4">
-              <label htmlFor="company" className="block text-gray-700 font-bold mb-2">Meeting Time</label>
-              <input type="text" id="company" name="company" className="border rounded w-full py-2 px-3" placeholder="e.g., 12:00 PM" value={meetingTime} onChange={(e) => setMeetingTime(e.target.value)}/>
+              <label htmlFor="meeting_time" className="block text-gray-700 font-bold mb-2">Meeting Time</label>
+              <input type="text" id="meeting_time" name="meeting_time" className="border rounded w-full py-2 px-3" placeholder="e.g., 12:00 PM" value={meetingTime} onChange={(e) => setMeetingTime(e.target.value)}/>
             </div>
 
             <div className="mb-4">
-              <label htmlFor="contact_email" className="block text-gray-700 font-bold mb-2">Your Time Zone</label>
-              <input type="text" id="contact_email" name="contact_email" className="border rounded w-full py-2 px-3" placeholder="e.g., PST" required value={meetingTimeZone} onChange={(e) => setMeetingTimeZone(e.target.value)}/>
+              <label htmlFor="meeting_timezone" className="block text-gray-700 font-bold mb-2">Your Time Zone</label>
+              <input type="text" id="meeting_timezone" name="meeting_timezone" className="border rounded w-full py-2 px-3" placeholder="e.g., PST" required value={meetingTimeZone} onChange={(e) => setMeetingTimeZone(e.target.value)}/>
+            </div>
+
+            <div className="mb-4">
+              <label htmlFor="discord_name" className="block text-gray-700 font-bold mb-2">Discord Name</label>
+              <input type="text" id="discord_name" name="discord_name" className="border rounded w-full py-2 px-3" placeholder="Discord username" required value={discordName} onChange={(e) => setDiscordName(e.target.value)}/>
             </div>
 
             <div>
