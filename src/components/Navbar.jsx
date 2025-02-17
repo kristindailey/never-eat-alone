@@ -21,6 +21,7 @@ const Navbar = () => {
                                 <NavLink to="/meetups" className={linkClass}>Meetups</NavLink>
                                 <NavLink to="/add-meetup" className={linkClass}>Add Meetup</NavLink>
                                 <NavLink to="/profile" className={linkClass}>Profile</NavLink>
+                                <NavLink to="/login" className={linkClass}>Login</NavLink>
                             </div>
                         </div>
                     </div>
