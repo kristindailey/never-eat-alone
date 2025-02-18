@@ -2,15 +2,15 @@
 
 Never Eat Alone is a meetup app that helps members of 100Devs connect for purposeful gatherings. Whether it's sharing a casual lunch, studying together, or preparing for interviews, the app makes it easy to create and join meetups that strengthen the community's collaborative learning journey.
 
-![Home View](./src/assets/readme-images/home.png)
-![Browse Meetups View](./src/assets/readme-images/browse-meetups.png)
-![Add Meetup View](./src/assets/readme-images/add-meetups.png)
-![Update Meetup View](./src/assets/readme-images/update-meetup.png)
-![Join Meetup Modal](./src/assets/readme-images/join-meetup.png)
-
 Tech Stack: JavaScript, React, Vite, Appwrite, Tailwind
 
 **Link to project:** 
+
+![Home View](./src/assets/readme-images/home.png)
+![Browse Meetups View](./src/assets/readme-images/browse-meetups.png)
+![Add Meetup View](./src/assets/readme-images/add-meetup.png)
+![Update Meetup View](./src/assets/readme-images/update-meetup.png)
+![Join Meetup Modal](./src/assets/readme-images/join-meetup.png)
 
 # How to Use
 1. Clone repo.
