@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { databases, appwriteConfig, ID } from "../services/appwrite";
+import { authService } from "../services/auth";
 
 const AddMeetupPage = () => {
   const [title, setTitle] = useState("");
@@ -16,25 +17,32 @@ const AddMeetupPage = () => {
   const addMeetup = async (e) => {
     e.preventDefault();
 
-    const newMeetup = {
-      title,
-      description,
-      meetingDate,
-      meetingTime,
-      meetingTimeZone,
-      discordName,
-    };
+    try {
+      const currentUser = await authService.getCurrentUser();
 
-    await databases.createDocument(
-      appwriteConfig.databaseId, 
-      appwriteConfig.meetupCollectionId,
-      ID.unique(), 
-      newMeetup
-    );
+      const newMeetup = {
+        title,
+        description,
+        meetingDate,
+        meetingTime,
+        meetingTimeZone,
+        discordName,
+        createdBy: currentUser.$id
+      };
+  
+      await databases.createDocument(
+        appwriteConfig.databaseId, 
+        appwriteConfig.meetupCollectionId,
+        ID.unique(), 
+        newMeetup
+      );
 
-    toast.success("Meetup added successfully.");
-
-    return navigate("/meetups");
+      toast.success("Meetup added successfully.");
+      navigate("/meetups");
+    } catch (error) {
+      toast.error("Failed to add meetup."); 
+      console.error("Error adding meetup:", error);
+    }
 };
 
   return (

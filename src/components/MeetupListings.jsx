@@ -1,21 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { appwriteConfig, databases } from "../services/appwrite";
 import { useLocation } from "react-router-dom";
+import { authService } from "../services/auth";
 import MeetupListing from "./MeetupListing";
 import Spinner from "./Spinner";
 
 const MeetupListings = () => {
   const [meetups, setMeetups] = useState([]);
+  const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const location = useLocation();
 
   useEffect(() => {
-    const getMeetups = async () => {
+    const initializeData = async () => {
       try {
         setLoading(true);
-        const response = await databases.listDocuments(appwriteConfig.databaseId, appwriteConfig.meetupCollectionId);
-        console.log(response);
-        setMeetups(response.documents);
+        const [meetupsResponse, user] = await Promise.all([
+          databases.listDocuments(appwriteConfig.databaseId, appwriteConfig.meetupCollectionId),
+          authService.getCurrentUser()
+        ]);
+        setMeetups(meetupsResponse.documents);
+        setCurrentUser(user);
       } catch (error) {
         console.error("Error fetching data", error);
       } finally {
@@ -23,7 +28,7 @@ const MeetupListings = () => {
       }
     };
   
-    getMeetups();
+    initializeData();
   }, []);
 
   const getHeading = () => {
@@ -46,7 +51,7 @@ const MeetupListings = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {getDisplayedMeetups().map((meetup) => (
-                <MeetupListing key={meetup.$id} meetup={meetup} />
+                <MeetupListing key={meetup.$id} meetup={meetup} currentUser={currentUser} />
               ))}
           </div>
         )}
