@@ -7,7 +7,6 @@ import HomePage from "./pages/HomePage";
 import MeetupsPage from "./pages/MeetupsPage";
 import AddMeetupPage from "./pages/AddMeetupPage";
 import EditMeetupPage from "./pages/EditMeetupPage";
-import ProfilePage from "./pages/ProfilePage";
 import NotFoundPage from "./pages/NotFoundPage";
 import LoginPage from "./login/LoginPage";
 import RegisterPage from "./register/RegisterPage";
@@ -29,7 +28,6 @@ const router = createBrowserRouter(
         <Route path="/meetups" element={<MeetupsPage />}/>
         <Route path="/add-meetup" element={<AddMeetupPage />}/>
         <Route path="/edit-meetup/:id" element={<EditMeetupPage />}/>
-        <Route path="/profile" element={<ProfilePage />}/>
       </Route>
 
       <Route path="*" element={<NotFoundPage />}/>

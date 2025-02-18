@@ -33,7 +33,6 @@ const Navbar = () => {
                                 <NavLink to="/" className={linkClass}>Home</NavLink>
                                 <NavLink to="/meetups" className={linkClass}>Meetups</NavLink>
                                 <NavLink to="/add-meetup" className={linkClass}>Add Meetup</NavLink>
-                                <NavLink to="/profile" className={linkClass}>Profile</NavLink>
                                 {user ? (
                                     <button onClick={handleLogout} className="text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2">Logout</button>
                                 ) : (
