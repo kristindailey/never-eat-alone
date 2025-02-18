@@ -4,7 +4,7 @@ Never Eat Alone is a meetup app that helps members of 100Devs connect for purpos
 
 Tech Stack: JavaScript, React, Vite, Appwrite, Tailwind
 
-**Link to project:** 
+**Link to project:** https://never-eat-alone-production.up.railway.app/
 
 ![Home View](./src/assets/readme-images/home.png)
 ![Browse Meetups View](./src/assets/readme-images/browse-meetups.png)
