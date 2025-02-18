@@ -26,6 +26,7 @@ Tech Stack: JavaScript, React, Vite, Appwrite, Tailwind
 # Future Enhancements
 - Profile pages that track meetups you've joined
 - Filter functionality for meetups
+- Expand authentication options
 - Reminder notifications
 - Auto-matching algorithm
 
