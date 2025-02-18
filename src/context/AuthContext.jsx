@@ -27,11 +27,14 @@ export const AuthProvider = ({ children }) => {
         try {
             setLoading(true);
             await authService.login(email, password);
-            await checkUser();
-            return user;
+            const currentUser = await authService.getCurrentUser();
+            setUser(currentUser);
+            return currentUser;
         } catch (error) {
             console.error("Login error:", error);
             throw error;
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -52,8 +55,8 @@ export const AuthProvider = ({ children }) => {
         try {
             setLoading(true);
             await authService.createAccount(email, password);
-            const loggedInUser = await login(email, password);
-            return loggedInUser;
+            const currentUser = await login(email, password);
+            return currentUser;
         } catch (error) {
             console.error("Registration error:", error);
             throw (error);

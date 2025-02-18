@@ -52,7 +52,7 @@ const LoginPage = () => {
 
             <div className="flex flex-col gap-5">
               <button type="submit" className="bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600" disabled={isLoading}>
-                {isLoading ? "Logging in..." : "Login"};
+                {isLoading ? "Logging in..." : "Login"}
               </button>
 
               <p>

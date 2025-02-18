@@ -1,9 +1,22 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import logo from "../assets/images/logo.png";
 
 const Navbar = () => {
+    const { user, logout } = useAuth();
+    const navigate = useNavigate();
+
     const linkClass = ({ isActive }) => isActive ? "bg-black text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2" : "text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2";
+
+    const handleLogout = async () => {
+        try {
+            await logout();
+            navigate("/");
+        } catch (error) {
+            console.error("Logout failed", error);
+        }  
+    };
 
     return (
         <nav className="bg-indigo-700 border-b border-indigo-500">
@@ -21,7 +34,11 @@ const Navbar = () => {
                                 <NavLink to="/meetups" className={linkClass}>Meetups</NavLink>
                                 <NavLink to="/add-meetup" className={linkClass}>Add Meetup</NavLink>
                                 <NavLink to="/profile" className={linkClass}>Profile</NavLink>
-                                <NavLink to="/login" className={linkClass}>Login</NavLink>
+                                {user ? (
+                                    <button onClick={handleLogout} className="text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2">Logout</button>
+                                ) : (
+                                    <NavLink to="/login" className={linkClass}>Login</NavLink>
+                                )}
                             </div>
                         </div>
                     </div>

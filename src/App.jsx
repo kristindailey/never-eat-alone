@@ -16,12 +16,13 @@ import { AuthProvider } from "./context/AuthContext";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route element={<MainLayout />}>
+      <Route path="/" element={<HomePage />}/>
+
       {/* Public routes */}
       <Route element={<PublicRoute />}>
-      <Route path="/" element={<HomePage />}/>
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
-    </Route>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+      </Route>
 
       {/* Protected routes */}
       <Route element={<ProtectedRoute />}>

@@ -14,7 +14,7 @@ const RegisterPage = () => {
   const { register, isLoading } = useAuth();
   const navigate = useNavigate();
 
-  const handleChange = () => {
+  const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -64,7 +64,7 @@ const RegisterPage = () => {
 
             <div className="mb-6">
               <label htmlFor="confirm-password" className="block font-bold mb-2">Confirm Password</label>
-              <input type="password" id="confirm-password" name="confirm-password" value={formData.confirmPassword} onChange={handleChange} className="border rounded w-full py-2 px-3" required/>
+              <input type="password" id="confirm-password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} className="border rounded w-full py-2 px-3" required/>
             </div>
 
             <div className="flex flex-col gap-5">
