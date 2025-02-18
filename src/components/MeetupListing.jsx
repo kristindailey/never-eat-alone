@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaDiscord } from "react-icons/fa";
+import { toast } from "react-toastify";
+import JoinMeetup from "./JoinMeetup";
 
 const MeetupListing = ({ meetup, currentUser }) => {
     return (
@@ -28,10 +30,9 @@ const MeetupListing = ({ meetup, currentUser }) => {
                                 Edit
                             </Link>
                         ) : (
-                            <Link to={`/meetups`} className="h-[36px] bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg text-center text-sm">
-                                Join
-                            </Link>
-                        )
+                            <JoinMeetup meetup={meetup} onJoin={(meetupId) => {
+                                toast.success("Thanks for joining the meetup!");
+                            }}/>                   )
                     ) : null}
                 </div>
             </div>
