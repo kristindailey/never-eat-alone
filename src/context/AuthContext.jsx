@@ -13,8 +13,9 @@ export const AuthProvider = ({ children }) => {
 
     const checkUser = async () => {
         try {
-            const user = await authService.getCurrentUser();
-            setUser(user);
+            setLoading(true);
+            const currentUser = await authService.getCurrentUser();
+            setUser(currentUser);
         } catch (error) {
             setUser(null);
         } finally {
@@ -22,38 +23,47 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
-    const login = async () => {
+    const login = async (email, password) => {
         try {
+            setLoading(true);
             await authService.login(email, password);
-            const user = await authService.getCurrentUser();
-            setUser(user);
+            await checkUser();
             return user;
         } catch (error) {
+            console.error("Login error:", error);
             throw error;
         }
     };
 
     const logout = async () => {
         try {
+            setLoading(true);
             await authService.logout();
             setUser(null);
         } catch (error) {
+            console.error("Logout error:", error);
             throw(error);
+        } finally {
+            setLoading(false);
         }
     };
 
-    const register = async () => {
+    const register = async (email, password) => {
         try {
+            setLoading(true);
             await authService.createAccount(email, password);
             return await login(email, password);
         } catch (error) {
+            console.error("Registration error:", error);
             throw (error);
+        } finally {
+            setLoading(false);
         }
     };
 
     const value = {
         user, 
-        loading,
+        isLoading: loading,
         login,
         logout,
         register,
@@ -61,7 +71,7 @@ export const AuthProvider = ({ children }) => {
 
     return (
         <AuthContext.Provider value={value}>
-            {!loading && children}
+            {children}
         </AuthContext.Provider>
     );
 };

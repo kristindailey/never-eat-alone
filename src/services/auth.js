@@ -29,11 +29,15 @@ export const authService = {
         try {
             return await account.get();
         } catch (error) {
+            if (error.code === 401) {
+                return null;
+            }
             console.error("Failed to get current user:", error);
+            throw error;
         }
     },
     // Logout user
-    async logout(email, password) {
+    async logout() {
         try {
             await account.deleteSession("current");
         } catch (error) {
