@@ -1,18 +1,32 @@
 import { ID } from "appwrite";
-import { account } from "./appwrite";
+import { account, databases, appwriteConfig } from "./appwrite";
+import { BsDisplay } from "react-icons/bs";
 
 export const authService = {
     // Create a new account
     async createAccount(email, password) {
         try {
-            const response = await account.create(
+            const authUser = await account.create(
                 ID.unique(),
                 email, 
                 password
             );
-            return response;
+
+            await databases.createDocument(
+                appwriteConfig.databaseId,
+                appwriteConfig.userCollectionId,
+                authUser.$id,
+                {
+                    displayName: name,
+                    email: email,
+                    bio: "",
+                    avatarUrl: ""
+                }
+            );
+            return authUser;
         } catch (error) {
             console.error("Failed to create an account:", error);
+            throw error;
         }
     },
     // Login user
@@ -42,6 +56,19 @@ export const authService = {
             await account.deleteSession("current");
         } catch (error) {
             console.error("Failed to logout:", error);
+        }
+    },
+    // Get user's database profile
+    async getUserProfile(useId) {
+        try {
+            return await databases.getDocument(
+                appwriteConfig.databaseId,
+                appwriteConfig.userCollectionId,
+                userId
+            );
+        } catch (error) {
+            console.error("Failed to get user profile:", error);
+            throw error;
         }
     },
 };

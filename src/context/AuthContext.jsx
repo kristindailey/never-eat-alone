@@ -52,7 +52,8 @@ export const AuthProvider = ({ children }) => {
         try {
             setLoading(true);
             await authService.createAccount(email, password);
-            return await login(email, password);
+            const loggedInUser = await login(email, password);
+            return loggedInUser;
         } catch (error) {
             console.error("Registration error:", error);
             throw (error);
