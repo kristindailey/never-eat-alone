@@ -20,7 +20,12 @@ Tech Stack: JavaScript, React, Vite, Appwrite, Tailwind
 5. Create a .env file in the root directory.
 - Add the .env file to your .gitignore file.
 - Use the following format for your variables: VITE_VARIABLE_NAME = "value".
-- You'll need the following variables: (1) VITE_APPWRITE_ENDPOINT, (2) VITE_PROJECT_ID, (3) VITE_DATABASE_ID, (4) VITE_USER_COLLECTION_ID, (5) VITE_MEETUP_COLLECTION_ID. 
+* You'll need the following variables:
+  - VITE_APPWRITE_ENDPOINT
+  - VITE_PROJECT_ID
+  - VITE_DATABASE_ID
+  - VITE_USER_COLLECTION_ID
+  - VITE_MEETUP_COLLECTION_ID
 - You can find the associated values once you have your project, database, and collections set up in Appwrite.
 
 # Future Enhancements
